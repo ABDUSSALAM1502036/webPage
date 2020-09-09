@@ -11,4 +11,5 @@ class WebPageController {
     def reservation() { }
     def stuff() { }
     def gallery() { }
+    def admin(){}
 }
