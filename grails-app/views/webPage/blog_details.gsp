@@ -59,13 +59,7 @@
 								<a class="dropdown-item" href="gallery.html">Gallery</a>
 							</div>
 						</li>
-						<li class="nav-item active dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="blog.html">blog</a>
-								<a class="dropdown-item" href="blog_details.html">blog Single</a>
-							</div>
-						</li>
+						<li class="nav-item active"><a class="nav-link" href="blog.html">blog</a></li>
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 					</ul>
 				</div>
@@ -104,82 +98,49 @@
 							<div class="side-blog-img">	
                                 <asset:image class="img-fluid" src="inner-blog-img.jpg" alt="" />						
 								<div class="date-blog-up">
-									27 Fab
+									${postt_details.date}
 								</div>
 							</div>
 							<div class="inner-blog-detail details-page">
-								<h3>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h3>
+								<h3>${postt_details.title}</h3>
 								<ul>
-									<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
+									<li><i class="zmdi zmdi-account"></i>Posted By : <span>Admin</span></li>
 									<li>|</li>
-									<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
+									<li><i class="zmdi zmdi-time"></i>Time : <span>${postt_details.time}</span></li>
 								</ul>
-								<p>Vestibulum quis ultricies enim. Quisque eu sapien a erat congue lacinia bibendum ac massa. Morbi vehicula aliquet libero sit amet dictum. Integer vel mauris non magna consequat porttitor. Nulla facilisi. Suspendisse posuere, elit eu fringilla congue, turpis magna tempor odio, a placerat magna tortor a mauris. Phasellus lobortis turpis dui, eget mollis ex vestibulum auctor. Nunc viverra leo ut accumsan aliquet. Maecenas aliquam dolor eget felis bibendum blandit.</p>
-								<p>Nunc iaculis, massa eget pellentesque mollis, nulla mauris aliquam eros, vitae condimentum leo nisl ut purus. Etiam nibh diam, vehicula non tincidunt id, consequat nec ex. Praesent vulputate sapien non tellus ultrices hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus pellentesque arcu erat. Curabitur dapibus fringilla porta. Sed in neque sit amet ante feugiat blandit. Nulla fringilla purus diam, cursus venenatis diam luctus nec.</p>
 								<blockquote>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non feugiat lacus. Nunc nisi velit, consectetur vitae ex porttitor, placerat scelerisque mauris. Phasellus sit amet tincidunt metus, quis tempus ex. Quisque in lorem ut mi ullamcorper suscipit eu nec purus. Nam maximus sagittis iaculis.</p>
+									<p>${postt_details.post_details}</p>
 								</blockquote>
-								<p>Vestibulum quis ultricies enim. Quisque eu sapien a erat congue lacinia bibendum ac massa. Morbi vehicula aliquet libero sit amet dictum. Integer vel mauris non magna consequat porttitor. Nulla facilisi. Suspendisse posuere, elit eu fringilla congue, turpis magna tempor odio, a placerat magna tortor a mauris.</p>
 							</div>
 						</div>
 						<div class="blog-comment-box">
 							<h3>Comments</h3>
-							<div class="comment-item">
-								<div class="comment-item-left">
-                                    <asset:image src="avt-img.jpg" alt="" />
+							<g:each in = "${post_comments}" status = "i" var = "val">
+								<br>
+								<div class="comment-item">
+									<div class="comment-item-left">
+										<asset:image src="avt-img.jpg" alt="" />
+									</div>
+									<div class="comment-item-right">
+										<div class="pull-left">
+											<a href="#">${val.username}</a>
+										</div>
+										<div class="pull-right">
+											<i class="fa fa-clock-o" aria-hidden="true"></i>Time : <span>${val.time}</span>
+										</div>
+										<div class="des-l">
+											<p>${val.post_comment}</p>
+										</div>
+										<a href="#" class="right-btn-re"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
+									</div>
 								</div>
-								<div class="comment-item-right">
-									<div class="pull-left">
-										<a href="#">Rubel Ahmed</a>
-									</div>
-									<div class="pull-right">
-										<i class="fa fa-clock-o" aria-hidden="true"></i>Time : <span>11.30 am</span>
-									</div>
-									<div class="des-l">
-										<p>Morbi lacinia ultrices lorem id tincidunt. Cras id dui risus. Pellentesque consectetur id mi sed pharetra. Proin imperdiet gravida nisl, sit amet varius urna. In auctor.</p>
-									</div>
-									<a href="#" class="right-btn-re"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
-								</div>
-							</div>
-							<div class="comment-item children">
-								<div class="comment-item-left">
-									<asset:image src="avt-img.jpg" alt="" />
-								</div>
-								<div class="comment-item-right">
-									<div class="pull-left">
-										<a href="#">Admin</a>
-									</div>
-									<div class="pull-right">
-										<i class="fa fa-clock-o" aria-hidden="true"></i>Time : <span>1.30 pm</span>
-									</div>
-									<div class="des-l">
-										<p>Morbi lacinia ultrices lorem id tincidunt. Cras id dui risus. Pellentesque consectetur id mi sed pharetra. Proin imperdiet gravida nisl, sit amet varius urna. In auctor.</p>
-									</div>
-									<a href="#" class="right-btn-re"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
-								</div>
-							</div>
-							<div class="comment-item">
-								<div class="comment-item-left">
-									<asset:image src="avt-img.jpg" alt="" />
-								</div>
-								<div class="comment-item-right">
-									<div class="pull-left">
-										<a href="#">Rubel Ahmed</a>
-									</div>
-									<div class="pull-right">
-										<i class="fa fa-clock-o" aria-hidden="true"></i>Time : <span>11.30 am</span>
-									</div>
-									<div class="des-l">
-										<p>Morbi lacinia ultrices lorem id tincidunt. Cras id dui risus. Pellentesque consectetur id mi sed pharetra. Proin imperdiet gravida nisl, sit amet varius urna. In auctor.</p>
-									</div>
-									<a href="#" class="right-btn-re"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
-								</div>
-							</div>
+							</g:each>
+							
 						</div>
 						<div class="comment-respond-box">
 							<h3>Leave your comment </h3>
 							<div class="comment-respond-form">
-								<form id="commentrespondform" class="comment-form-respond row" method="post">
+								<div id="commentrespondform" class="comment-form-respond row" >
 									<div class="col-lg-6 col-md-6 col-sm-6">
 										<div class="form-group">
 											<input id="name_com" class="form-control" name="name" placeholder="Name" type="text">
@@ -194,9 +155,9 @@
 										</div>
 									</div>
 									<div class="col-lg-12 col-md-12 col-sm-12">
-										<button class="btn btn-submit">Submit comment</button>
+										<button class="btn btn-submit" onClick = "commentAjax()">Submit comment</button>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -225,58 +186,23 @@
 						<h3>Recent Post</h3>
 						<div class="post-box-blog">
 							<div class="recent-post-box">
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-01.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-02.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-03.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-01.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
+								<g:each in = "${fetched_value1}" status = "i" var = "val">
+									<g:if test="${i <= 4}">
+										<div class="recent-box-blog">
+											<div class="recent-img">
+												<asset:image  class="img-fluid" src="post-img-01.jpg" alt="" />
+											</div>
+											<div class="recent-info">
+												<ul>
+													<li><i class="zmdi zmdi-account"></i>Posted By : <span>Admin</span></li>
+													<li>|</li>
+													<li><i class="zmdi zmdi-time"></i>Time : <span>${val.time}</span></li>
+												</ul>
+												<h4>${val.title}</h4>
+											</div>
+										</div>
+									</g:if>
+								</g:each>
 							</div>
 						</div>
 						<h3>Recent Tag</h3>
@@ -404,4 +330,67 @@
 <asset:javascript src="contact-form-script.js"></asset:javascript>
 <asset:javascript src="custom.js"></asset:javascript>
 </body>
+
+	 <script>
+		    var queryString = new Array();
+			var post_id;
+			$(function () {
+				if (queryString.length == 0) {
+					if (window.location.search.split('?').length > 1) {
+						var params = window.location.search.split('?')[1].split('&');
+						for (var i = 0; i < params.length; i++) {
+							var key = params[i].split('=')[0];
+							var value = decodeURIComponent(params[i].split('=')[1]);
+							queryString[key] = value;
+						}
+					}
+				}
+				if (queryString["post_id"] != null) {
+					post_id = queryString["post_id"];
+					//alert(post_id);
+				}
+			});
+		$(document).ready(function(){
+            var postt_id = post_id;
+
+            var URL="${createLink(controller:'webPage',action:'blog_details')}"
+
+                $.ajax({
+                    url: URL,
+                    type: "POST",
+                    datatype: "html",
+                    data:{post_id:postt_id},
+                });
+        });
+
+		function commentAjax() {
+            $(document).ready(function() {
+                var username = $('#name_com').val(); 
+                var email = $('#email_com').val();
+				var comment = $('#textarea_com').val();
+                var today1 = new Date();
+                var time = today1.getHours() + ":" + today1.getMinutes();  
+
+                if(username == "" || email == "" || comment == "") {
+                    alert('***please fillup all fields !!');
+                    return false;
+                }
+
+                var URL="${createLink(controller:'webPage',action:'comment_student_ajax_req')}"
+
+                $.ajax({
+                    url: URL,
+                    type: "POST",
+                    datatype: "html",
+                    data:{username:username,email:email,comment:comment,time:time},
+                    success:function(data)
+                    {
+						alert(data)
+                        $('#name_com').val("");
+                        $('#email_com').val("");$('#textarea_com').val("");
+                    }
+                }) 
+            })
+        }
+	</script>
 </html>

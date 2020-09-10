@@ -3,7 +3,7 @@ package webpage
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class WebPageSpec extends Specification implements DomainUnitTest<WebPage> {
+class BlogsSpec extends Specification implements DomainUnitTest<Blogs> {
 
     def setup() {
     }
