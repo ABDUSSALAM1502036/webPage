@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<g:meta name="keywords" charset="utf-8"/>
+    <g:meta name="keywords" http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <g:meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <!-- Site Metas -->
     <title>Live Dinner Restaurant - Responsive HTML5 Template</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<g:meta name="keywords" content=""/>
+    <g:meta name="description" content=""/>
+    <g:meta name="author" content=""/>
 
     <!-- Site Icons -->
 
@@ -80,56 +79,35 @@
 	</div>
 	<!-- End All Pages -->
 	
-	<!-- Start Gallery -->
-	<div class="gallery-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="heading-title text-center">
-						<h2>Gallery</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-					</div>
-				</div>
-			</div>
-			<div class="tz-gallery">
-				<div class="row">
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/gallery-img-01.jpg">
-                            <asset:image class="img-fluid" src="gallery-img-01.jpg" alt="Gallery Images" />
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/gallery-img-02.jpg">
-							<asset:image class="img-fluid" src="gallery-img-02.jpg" alt="Gallery Images" />
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/gallery-img-03.jpg">
-							<asset:image class="img-fluid" src="gallery-img-03.jpg" alt="Gallery Images" />
-						</a>
-					</div>
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/gallery-img-04.jpg">
-							<asset:image class="img-fluid" src="gallery-img-04.jpg" alt="Gallery Images" />
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/gallery-img-05.jpg">
-							<asset:image class="img-fluid" src="gallery-img-05.jpg" alt="Gallery Images" />
-						</a>
-					</div> 
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="images/gallery-img-05.jpg">
-							<asset:image class="img-fluid" src="gallery-img-06.jpg" alt="Gallery Images" />
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Gallery -->
+<!-- Start Gallery -->
+<div class="gallery-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Gallery</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                </div>
+            </div>
+        </div>
+        <div class="tz-gallery">
+            <div class="row">
+                <g:each in = "${gallery_images}" status = "i" var = "val">
+                    <g:if test="${val.category == "gallery"}">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <a class="lightbox" href="${createLink(action: 'getImage1', controller: 'webPage', id:"${val.id}")}">
+                                <img class="img-fluid" src="${createLink(action: 'getImage1', controller: 'webPage', id:"${val.id}")}" alt="Gallery Images" />
+                            </a>
+                        </div>
+                    </g:if>
+                </g:each>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Gallery -->
 	
-	<!-- Start Customer Reviews -->
+<!-- Start Customer Reviews -->
 <div class="customer-reviews-box">
     <div class="container">
         <div class="row">
@@ -274,17 +252,20 @@
 	
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
 
+	
 	 <!-- ALL JS FILES -->
-<asset:javascript src="jquery-3.2.1.min.js"></asset:javascript>
-<asset:javascript src="popper.min.js"></asset:javascript>
-<asset:javascript src="bootstrap.min.js"></asset:javascript>
-<!-- ALL PLUGINS -->
-<asset:javascript src="jquery.superslides.min.js"></asset:javascript>
-<asset:javascript src="images-loded.min.js"></asset:javascript>
-<asset:javascript src="isotope.min.js"></asset:javascript>
-<asset:javascript src="baguetteBox.min.js"></asset:javascript>
-<asset:javascript src="form-validator.min.js"></asset:javascript>
-<asset:javascript src="contact-form-script.js"></asset:javascript>
-<asset:javascript src="custom.js"></asset:javascript>
+	<asset:javascript src="jquery-3.2.1.min.js"></asset:javascript>
+	<asset:javascript src="popper.min.js"></asset:javascript>
+	<asset:javascript src="bootstrap.min.js"></asset:javascript>
+	<!-- ALL PLUGINS -->
+	<asset:javascript src="jquery.superslides.min.js"></asset:javascript>
+	<asset:javascript src="images-loded.min.js"></asset:javascript>
+	<asset:javascript src="isotope.min.js"></asset:javascript>
+	<asset:javascript src="baguetteBox.min.js"></asset:javascript>
+	<asset:javascript src="form-validator.min.js"></asset:javascript>
+	<asset:javascript src="contact-form-script.js"></asset:javascript>
+	<asset:javascript src="custom.js"></asset:javascript>
+
+		
 </body>
 </html>

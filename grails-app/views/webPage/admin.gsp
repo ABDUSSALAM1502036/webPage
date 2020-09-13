@@ -35,7 +35,7 @@
         #create-student1{
             text-align:center;
             width:350px;
-            height:500px;
+            height:470px;
             padding:20px;
             margin:20px;
             float:left;
@@ -44,7 +44,27 @@
         #create-student2{
             text:center;
             width:500px;
-            height:500px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            float:left;
+            border: 2px red solid;
+        }
+         #create-student3{
+            margin-top:100px;
+            text-align:center;
+            width:350px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            float:left;
+            border: 2px red solid;
+        }
+        #create-student4{
+            margin-top:100px;
+            text-align:center;
+            width:350px;
+            height:470px;
             padding:20px;
             margin:20px;
             float:left;
@@ -52,6 +72,10 @@
         }
         #create-student2 input,textarea{
             margin:5px;
+        }
+        #create-student3 input,button{
+            margin:10px;
+            width:250px;
         }
         
     </style>
@@ -94,10 +118,10 @@
 <div>
     <br><br><br><br>
 </div>
-<!--start developer form-->
+<!--start developer form -->
         <div id="create-student1">
-        <br><br><br>
-        <h3>Add Developer Details Here...</h3><br>
+            <br><br><br>
+            <h3>Add Developer Details Here...</h3><br>
             <g:form resource="${this.webPage}" method="POST">
                 <fieldset class="form">
                     <f:all bean="webPage"/>
@@ -111,13 +135,76 @@
 
 <!--start Blog form-->
     <div id="create-student2">
-        <strong>Add Post Here...</strong><br>
-            <input type="text" id="title" placeholder="Enter Post Title"/> <br>
-            <textarea cols="50" rows="5" id="post_shortcut" placeholder="Enter post-shortcut"></textarea><br>
-            <textarea cols="50" rows="5" id="post_details" placeholder="Enter post-details"></textarea><br>
-            <button style="width:100px;margin-left:320px" id = "button1" name = "button1" onClick = "postAjax()">post</button>
+        <strong style="margin:5px">Add Post Here...</strong><br>
+        <input type="text" id="title" placeholder="Enter Post Title"/> 
+        <input type="text" id="catagory" placeholder="Enter catagory"/> <br>
+        <textarea cols="50" rows="5" id="post_shortcut" placeholder="Enter post-shortcut"></textarea><br>
+        <textarea cols="50" rows="5" id="post_details" placeholder="Enter post-details"></textarea><br>
+        <button style="width:100px;margin-left:320px" id = "button1" name = "button1" onClick = "postAjax()">post</button>
     </div>
 <!--end Blog form-->
+<!--start Stuff form-->
+    <div id="create-student3" >
+        <div style="margin-top:90px">
+            <strong >Add Stuff details Here...</strong><br>
+            <g:uploadForm class="photos" action ="stuff_ajax_req">
+                <g:field type="text" name="stuff_name" placeholder="Enter Stuff Name "/><br>
+                <g:field type="text" name="stuff_position" placeholder="Enter Stuff Position "/><br>
+                <g:field name="photos" type="file" accept="image/*"/>
+                <g:submitButton name="save" value="save" />
+            </g:uploadForm>
+        </div>
+    </div>
+<!--end Stuff form-->
+<!--start Menu form-->
+    <div id="create-student4" >
+        <div style="margin-top:30px">
+            <h2 >Add Menu Items Here...</h2><br>
+            <g:uploadForm class="photos" action ="menu_ajax_req">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <select class="custom-select d-block form-control" name="menu_guest" required data-error="Please Select Person">
+                            <option disabled selected>Select Category*</option>
+                            <option value="drinks">drinks</option>
+                            <option value="lunch">lunch</option>
+                            <option value="dinner">dinner</option>
+                        </select>
+                    </div> 
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input  class="custom-select d-block form-control" name="menu_title" type="text" placeholder="Enter Menu Title"/>
+                    </div> 
+                    <div class="form-group">
+                        <input  class="custom-select d-block form-control" name="menu_price" type="text" placeholder="Enter Menu Price"/> 
+                    </div> 
+                    <div class="form-group">
+                        <input   class="custom-select d-block form-control" name="menu_details" type="text" placeholder="Enter Menu Details"/>
+                    </div> 
+                </div> 
+                <g:field name="photos" type="file" accept="image/*"/>
+                <g:submitButton name="save" value="save" />
+            </g:uploadForm>
+        </div>
+    </div>
+<!--end Menu form-->
+
+<!--start image form-->
+    <div id="create-student3" >
+        <div style="margin-top:115px">
+            <h2 >Add image Here...</h2><br>
+            <g:uploadForm class="photos" action ="create1">
+                <select class="custom-select d-block form-control" name="category" required data-error="Please Select Person">
+						<option disabled selected>Select Category*</option>
+                        <option value="home">home</option>
+						<option value="gallery">gallery</option>
+				</select>
+                <g:field name="photos" type="file" accept="image/*"/>
+                <g:submitButton name="upload" value="Upload" />
+            </g:uploadForm>
+        </div>
+    </div>
+<!--end image form-->
 
 
 <a href="#" id="back-to-top" title="Back to top" style="display: none;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
@@ -136,11 +223,13 @@
 <asset:javascript src="custom.js"></asset:javascript>
 </body>
 <script>
+        
         function postAjax() {
             $(document).ready(function() {
                 const monthNames = ["January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"];
                 var title = $('#title').val(); 
+                var catagory = $('#catagory').val();
                 var today = new Date();
                 var date = today.getDate()+' '+ monthNames[today.getMonth()]+', '+(today.getFullYear()+1);
                 var today1 = new Date();
@@ -148,7 +237,7 @@
                 var post_shortcut = $('#post_shortcut').val(); 
                 var post_details = $('#post_details').val(); 
 
-                if(title == "" || date == "" || time == "" || post_shortcut == "" || post_details == "") {
+                if(title == "" || date == "" || time == "" || post_shortcut == "" || post_details == "" || catagory == "") {
                     alert('***please fillup all fields !!');
                     return false;
                 }
@@ -159,16 +248,16 @@
                     url: URL,
                     type: "POST",
                     datatype: "html",
-                    data:{title:title,date:date,time:time,post_shortcut:post_shortcut,post_details:post_details},
+                    data:{title:title,date:date,time:time,post_shortcut:post_shortcut,post_details:post_details,catagory:catagory},
                     success:function(data)
                     {
                         alert(data);
-                        $('#title').val("");
+                        $('#title').val("");$('#catagory').val("");
                         $('#post_shortcut').val("");$('#post_details').val("");
                     }
-                }) 
+                })
             })
         }
-
+    
     </script>
 </html>

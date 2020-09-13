@@ -71,45 +71,23 @@
 <!-- Start slides -->
 <div id="slides" class="cover-slides">
     <ul class="slides-container">
-        <li class="text-left">
-            <asset:image src="slider-01.jpg" alt=""/>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+        <g:each in = "${gallery_images}" status = "i" var = "val">
+            <g:if test="${val.category == "home"}">
+                <li class="text-left">
+                    <img src="${createLink(action: 'getImage1', controller: 'webPage', id: "${val.id}")}" alt="nothing" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
+                                <p class="m-b-40">See how your users experience your website in realtime or view  <br>
+                                    trends to see any changes in performance over time.</p>
+                                <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-left">
-            <asset:image src="slider-02.jpg" alt=""/>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-left">
-            <asset:image src="slider-03.jpg" alt=""/>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Yamifood Restaurant</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br>
-                            trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
+                </li>
+            </g:if>
+        </g:each>
     </ul>
     <div class="slides-navigation">
         <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
@@ -155,247 +133,103 @@
 <!-- End QT -->
 
 <!-- Start Menu -->
-<div class="menu-box">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="heading-title text-center">
-                    <h2>Special Menu</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row inner-menu-box">
-            <div class="col-3">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Lunch</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Dinner</a>
-                </div>
-            </div>
-
-            <div class="col-9">
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 special-grid drinks">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-01.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Drinks 1</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $7.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid drinks">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-02.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Drinks 2</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid drinks">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-03.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Drinks 3</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $10.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid lunch">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-04.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Lunch 1</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $15.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid lunch">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-05.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Lunch 2</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $18.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid lunch">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-06.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Lunch 3</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $20.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid dinner">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-07.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Dinner 1</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $25.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid dinner">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-08.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Dinner 2</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $22.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid dinner">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-09.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Dinner 3</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $24.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 special-grid drinks">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-01.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Drinks 1</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $7.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid drinks">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-02.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Drinks 2</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid drinks">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-03.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Drinks 3</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $10.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 special-grid lunch">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-04.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Lunch 1</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $15.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid lunch">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-05.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Lunch 2</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $18.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid lunch">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-06.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Lunch 3</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $20.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 special-grid dinner">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-07.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Dinner 1</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $25.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid dinner">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-08.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Dinner 2</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $22.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 special-grid dinner">
-                                <div class="gallery-single fix">
-                                    <asset:image src="img-09.jpg" class="img-fluid" alt="Image"/>
-                                    <div class="why-text">
-                                        <h4>Special Dinner 3</h4>
-                                        <p>Sed id magna vitae eros sagittis euismod.</p>
-                                        <h5> $24.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Special Menu</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row inner-menu-box">
+				<div class="col-3">
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
+						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</a>
+						<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Lunch</</a>
+						<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Dinner</a>
+					</div>
+				</div>
+				<div class="col-9">
+					<div class="tab-content" id="v-pills-tabContent">
+						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+							<div class="row">
+								<g:each in = "${all_menu}" status = "i" var = "val">
+									<div class="col-lg-4 col-md-6 special-grid drinks">
+										<div class="gallery-single fix">
+                                            <img class="img-fluid" src="${createLink(action: 'getMenu', controller: 'webPage', id:"${val.id}")}" alt="Images" />
+											<div class="why-text">
+												<h4>${val.title}</h4>
+												<p>${val.price}</p>
+												<h5>${val.item_details}</h5>
+											</div>
+										</div>
+									</div>
+								</g:each>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+							<div class="row">
+								<g:each in = "${all_menu}" status = "i" var = "val">
+									<g:if test="${val.catagory == "drinks"}">
+										<div class="col-lg-4 col-md-6 special-grid drinks">
+											<div class="gallery-single fix">
+												<img class="img-fluid" src="${createLink(action: 'getMenu', controller: 'webPage', id:"${val.id}")}" alt="Images" />
+												<div class="why-text">
+													<h4>${val.title}</h4>
+												    <p>${val.price}</p>
+												    <h5>${val.item_details}</h5>
+												</div>
+											</div>
+										</div>
+									</g:if>
+								</g:each>
+							</div>	
+						</div>
+						<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+							<div class="row">
+								<g:each in = "${all_menu}" status = "i" var = "val">
+									<g:if test="${val.catagory == "lunch"}">
+										<div class="col-lg-4 col-md-6 special-grid lunch">
+											<div class="gallery-single fix">
+												<img class="img-fluid" src="${createLink(action: 'getMenu', controller: 'webPage', id:"${val.id}")}" alt="Images" />
+												<div class="why-text">
+													<h4>${val.title}</h4>
+												    <p>${val.price}</p>
+												    <h5>${val.item_details}</h5>
+												</div>
+											</div>
+										</div>
+									</g:if>
+								</g:each>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+							<div class="row">
+								<g:each in = "${all_menu}" status = "i" var = "val">
+									<g:if test="${val.catagory == "dinner"}">
+										<div class="col-lg-4 col-md-6 special-grid dinner">
+											<div class="gallery-single fix">
+												<img class="img-fluid" src="${createLink(action: 'getMenu', controller: 'webPage', id:"${val.id}")}" alt="Images" />
+												<div class="why-text">
+													<h4>${val.title}</h4>
+												    <p>${val.price}</p>
+												    <h5>${val.item_details}</h5>
+												</div>
+											</div>
+										</div>
+									</g:if>
+								</g:each>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 <!-- End Menu -->
 
 <!-- Start Gallery -->
@@ -411,36 +245,15 @@
         </div>
         <div class="tz-gallery">
             <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <a class="lightbox" href="../../images/gallery-img-01.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-01.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="../../images/gallery-img-02.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-02.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="../../images/gallery-img-03.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-03.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <a class="lightbox" href="../../images/gallery-img-04.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-04.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="../../images/gallery-img-05.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-05.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="../../images/gallery-img-06.jpg">
-                        <asset:image class="img-fluid" src="gallery-img-06.jpg" alt="Gallery Images"/>
-                    </a>
-                </div>
+                <g:each in = "${gallery_images}" status = "i" var = "val">
+                    <g:if test="${val.category == "gallery"}">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <a class="lightbox" href="${createLink(action: 'getImage1', controller: 'webPage', id:"${val.id}")}">
+                                <img class="img-fluid" src="${createLink(action: 'getImage1', controller: 'webPage', id:"${val.id}")}" alt="Gallery Images" />
+                            </a>
+                        </div>
+                    </g:if>
+                </g:each>
             </div>
         </div>
     </div>
