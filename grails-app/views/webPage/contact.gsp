@@ -127,7 +127,7 @@
 									<div class="help-block with-errors"></div>
 								</div>
 								<div class="submit-button text-center">
-									<button class="btn btn-common" id="submit" onClick="hmm" type="submit">Send Message</button>
+									<button class="btn btn-common" id="submit"  type="submit">Send Message</button>
 									<div id="msgSubmit" class="h3 text-center hidden"></div> 
 									<div class="clearfix"></div> 
 								</div>
@@ -250,12 +250,30 @@
 
 		$(document).ready(function() {
             $('.row button').click(function(){
+				var name = $('#name').val();
+				var email = $('#email').val();
+				var person = $('#guest').val();
+				var message = $('#message').val();
 				var status = $(this).attr('class');
+
 				if(status == "btn btn-common"){
-					$('#msgSubmit').html("");
-					alert($('#name').val() + " " + $('#email').val() + " " + $('#guest').val() );
+					$('#msgSubmit').html("Processing...");
+					
+					var URL="${createLink(controller:'webPage',action:'send1')}"
+
+					$.ajax({
+						url: URL,
+						type: "POST",
+						datatype: "html",
+						data:{name:name,email:email,person:person,message:message},
+						success:function(data)
+						{
+							$('#msgSubmit').html(data);
+							$('#name').val("");$('#email').val("");
+							$('#guest').val("");$('#message').val("");
+						}
+					}) 
 				}
-				
             });
         });
 		$('.map-full').mapify({

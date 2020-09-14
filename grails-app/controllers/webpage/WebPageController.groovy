@@ -111,6 +111,15 @@ class WebPageController {
         [all_menu:all_menu]
     }
     def contact() { }
+    def send1() {
+        sendMail {
+            to "abdussalam1502036@gmail.com"
+            subject "Live Dinner Reservation"
+            text "Customers Details\n\n\nName : " + params.name +"\nEmail Address : "+params.email+"\nNo. of Persion:"+params.person+"\n\nMessage From Customer :\n"+params.message;
+        }
+
+        render "Successfully send to the Restaurant Manager...";
+    }
     def blog() {
         def fetched_value1 = Blogs.findAll() 
         [fetched_value1:fetched_value1]
@@ -121,8 +130,8 @@ class WebPageController {
         String imageContentType = request.getFile("photos").contentType
         String title = params.title;
         String category = params.category;
-        String date = new Date();
-        String time = "11:19 PM"; 
+        String datePart  = new Date();
+        String timePart = "01:53 PM"
         String shortcut = params.shortcut;
         String details = params.details;
         if (image == null ) {
@@ -137,8 +146,8 @@ class WebPageController {
         } else {
             imageMap.put("title", title);
             imageMap.put("category", category);
-            imageMap.put("date", date);
-            imageMap.put("time", time);
+            imageMap.put("date", datePart);
+            imageMap.put("time", timePart);
             imageMap.put("shortcut", shortcut);
             imageMap.put("details", details);
             imageMap.put("image", image);

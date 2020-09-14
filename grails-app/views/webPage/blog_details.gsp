@@ -215,7 +215,7 @@
 									<g:if test="${i <= 4}">
 										<div class="recent-box-blog">
 											<div class="recent-img">
-												<asset:image  class="img-fluid" src="post-img-01.jpg" alt="" />
+												<img style="width:90px;height:90px" class="img-fluid" src="${createLink(action: 'getBlog', controller: 'webPage', id:"${val.id}")}" alt="" />	
 											</div>
 											<div class="recent-info">
 												<ul>

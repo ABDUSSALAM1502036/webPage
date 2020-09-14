@@ -1,0 +1,79 @@
+
+        #create-student1{
+            text-align:center;
+            width:350px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            border: 2px red solid;
+            float:left;
+        }
+        #create-student2{
+            text:center;
+            width:500px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            border: 2px red solid;
+            float:left;
+        }
+         #create-student3{
+            margin-top:100px;
+            text-align:center;
+            width:350px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            border: 2px red solid;
+            float:left;
+        }
+        #create-student4 {
+            margin-top:100px;
+            text-align:center;
+            width:350px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            border: 2px red solid;
+            float:left;
+        }
+        #create-student5 {
+            margin-top:100px;
+            text-align:center;
+            width:350px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            border: 2px red solid;
+            float:left;
+        }
+        #create-student2 input,textarea{
+            margin:5px;
+        }
+        #create-student2 input,#menu_select{
+            width:205px;
+            height:33px;
+        }
+        #create-student3 input,button{
+            margin:10px;
+            width:250px;
+        }
+        #create-student5 input,button{
+            margin:10px;
+            width:250px;
+        }
+        #image_category{
+            width:250px;
+            height:35px;
+            margin:5px;
+        }
+        .nav{
+            margin-top:100px;
+            text-align:center;
+            width:350px;
+            height:470px;
+            padding:20px;
+            margin:20px;
+            float:left;
+        }
+        

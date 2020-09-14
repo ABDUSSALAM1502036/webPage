@@ -26,64 +26,13 @@
     <asset:stylesheet href="responsive.css"/>
     <!-- Custom CSS -->
     <asset:stylesheet href="custom.css"/>
+    <!-- Admin CSS-->
+    <asset:stylesheet href="admin.css"/>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        #create-student1{
-            text-align:center;
-            width:350px;
-            height:470px;
-            padding:20px;
-            margin:20px;
-            float:left;
-            border: 2px red solid;
-        }
-        #create-student2{
-            text:center;
-            width:500px;
-            height:470px;
-            padding:20px;
-            margin:20px;
-            float:left;
-            border: 2px red solid;
-        }
-         #create-student3{
-            margin-top:100px;
-            text-align:center;
-            width:350px;
-            height:470px;
-            padding:20px;
-            margin:20px;
-            float:left;
-            border: 2px red solid;
-        }
-        #create-student4{
-            margin-top:100px;
-            text-align:center;
-            width:350px;
-            height:470px;
-            padding:20px;
-            margin:20px;
-            float:left;
-            border: 2px red solid;
-        }
-        #create-student2 input,textarea,select{
-            margin:5px;
-        }
-        #create-student2 input,select{
-            width:205px;
-            height:33px;
-        }
-        #create-student3 input,button{
-            margin:10px;
-            width:250px;
-        }
-        
-    </style>
-
 </head>
 
 <body>
@@ -122,8 +71,17 @@
 <div>
     <br><br><br><br>
 </div>
+
+<div class="nav">
+    <button><h2>add Developer</h2></button>
+    <button><h2>add Blog</h2></button>
+    <button><h2>add Stuff</h2></button>
+    <button><h2>add Menu</h2></button>
+    <button><h2>add Image</h2></button>
+</div>
+
 <!--start developer form -->
-        <div id="create-student1">
+        <div id="create-student1" style="display:none">
             <br><br><br>
             <h3>Add Developer Details Here...</h3><br>
             <g:form resource="${this.webPage}" method="POST">
@@ -138,11 +96,11 @@
 <!--end developer form-->
 
 <!--start Blog form-->
-    <div id="create-student2">
+    <div id="create-student2" style="display:none">
         <strong style="margin:5px">Add Post Here...</strong><br>
             <g:uploadForm class="photos" action ="blog_ajax_req">
             <input type="text" name="title" placeholder="Enter Post Title"/> 
-            <select  name="category">
+            <select  id="menu_select" name="category">
                 <option disabled selected>Select Category*</option>
                 <option value="drink">drink</option>
                 <option value="lunch">lunch</option>
@@ -156,7 +114,7 @@
     </div>
 <!--end Blog form-->
 <!--start Stuff form-->
-    <div id="create-student3" >
+    <div id="create-student3" style="display:none" >
         <div style="margin-top:90px">
             <strong >Add Stuff details Here...</strong><br>
             <g:uploadForm class="photos" action ="stuff_ajax_req">
@@ -169,8 +127,8 @@
     </div>
 <!--end Stuff form-->
 <!--start Menu form-->
-    <div id="create-student4" >
-        <div style="margin-top:30px">
+    <div id="create-student4" style="display:none">
+        <div style="margin-top:15px">
             <h2 >Add Menu Items Here...</h2><br>
             <g:uploadForm class="photos" action ="menu_ajax_req">
                 <div class="col-md-12">
@@ -194,19 +152,21 @@
                         <input   class="custom-select d-block form-control" name="menu_details" type="text" placeholder="Enter Menu Details"/>
                     </div> 
                 </div> 
-                <g:field name="photos" type="file" accept="image/*"/>
-                <g:submitButton name="save" value="save" />
+                <div class="col-md-12">
+                     <g:field name="photos" type="file" accept="image/*"/>
+                    <g:submitButton name="save" value="save" style="width:100px;margin-left:170px;margin-top:10px"/> 
+                </div> 
             </g:uploadForm>
         </div>
     </div>
 <!--end Menu form-->
 
 <!--start image form-->
-    <div id="create-student3" >
-        <div style="margin-top:115px">
-            <h2 >Add image Here...</h2><br>
+    <div id="create-student5" style="display:none">
+        <div style="margin-top:90px">
+            <h2 >Add image Here...</h2>
             <g:uploadForm class="photos" action ="create1">
-                <select class="custom-select d-block form-control" name="category" required data-error="Please Select Person">
+                <select id="image_category" name="category" >
 						<option disabled selected>Select Category*</option>
                         <option value="home">home</option>
 						<option value="gallery">gallery</option>
@@ -234,4 +194,46 @@
 <asset:javascript src="contact-form-script.js"></asset:javascript>
 <asset:javascript src="custom.js"></asset:javascript>
 </body>
+<script>
+        $(document).ready(function(){
+            $('.nav h2').click(function(){
+                var item = $(this).html();
+                if(item == "add Developer"){
+                    $('#create-student1').css("display","block");
+                    $('#create-student2').css("display","none");
+                    $('#create-student3').css("display","none");
+                    $('#create-student4').css("display","none");
+                    $('#create-student5').css("display","none");
+                }
+                if(item == "add Blog"){
+                    $('#create-student1').css("display","none");
+                    $('#create-student2').css("display","block");
+                    $('#create-student3').css("display","none");
+                    $('#create-student4').css("display","none");
+                    $('#create-student5').css("display","none");
+                }
+                if(item == "add Stuff"){
+                    $('#create-student1').css("display","none");
+                    $('#create-student2').css("display","none");
+                    $('#create-student3').css("display","block");
+                    $('#create-student4').css("display","none");
+                    $('#create-student5').css("display","none");
+                }
+                if(item == "add Menu"){
+                    $('#create-student1').css("display","none");
+                    $('#create-student2').css("display","none");
+                    $('#create-student3').css("display","none");
+                    $('#create-student4').css("display","block");
+                    $('#create-student5').css("display","none");
+                }
+                if(item == "add Image"){
+                    $('#create-student1').css("display","none");
+                    $('#create-student2').css("display","none");
+                    $('#create-student3').css("display","none");
+                    $('#create-student4').css("display","none");
+                    $('#create-student5').css("display","block");
+                }
+            });
+        });
+    </script>
 </html>
