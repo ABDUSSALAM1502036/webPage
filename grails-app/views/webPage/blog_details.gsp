@@ -98,7 +98,7 @@
 					<div class="blog-inner-details-page">
 						<div class="blog-inner-box">
 							<div class="side-blog-img">	
-                                <asset:image class="img-fluid" src="inner-blog-img.jpg" alt="" />						
+								<img style="width:720px;height:470px"class="img-fluid" src="${createLink(action: 'getBlog', controller: 'webPage', id:ppost_id)}" alt="" />		
 								<div class="date-blog-up">
 									${postt_details.date}
 								</div>
@@ -111,7 +111,7 @@
 									<li><i class="zmdi zmdi-time"></i>Time : <span>${postt_details.time}</span></li>
 								</ul>
 								<blockquote>
-									<p>${postt_details.post_details}</p>
+									<p>${postt_details.details}</p>
 								</blockquote>
 							</div>
 						</div>
@@ -133,11 +133,34 @@
 										<div class="des-l">
 											<p>${val.post_comment}</p>
 										</div>
-										<a href="#" class="right-btn-re"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
+										
+										<input type="text"  id="comment" placeholder="write your comment.." style="visibility:hidden;width:300px"/>
+										<button name="${val.id}" id="send" style="visibility:hidden;width:100px">send</button>
+										
+										<button  id="replyBtn"class="right-btn-re"><i class="fa fa-reply" aria-hidden="true"></i> Reply</button>
 									</div>
 								</div>
+								<g:each in = "${all_reply}" status = "ii" var = "vallll">
+									<g:if test="${val.id == vallll.commentInReply.id}">
+										<div class="comment-item children">
+											<div class="comment-item-left">
+												<asset:image src="avt-img.jpg" alt="" />
+											</div>
+											<div class="comment-item-right">
+												<div class="pull-left">
+													<a href="#">Admin</a>
+												</div>
+												<div class="pull-right">
+													<i class="fa fa-clock-o" aria-hidden="true"></i>Time : <span>${vallll.time}</span>
+												</div>
+												<div class="des-l">
+													<p>${vallll.reply}</p>
+												</div>
+											</div>
+										</div>
+									</g:if>
+								</g:each>
 							</g:each>
-							
 						</div>
 						<div class="comment-respond-box">
 							<h3>Leave your comment </h3>
@@ -211,7 +234,7 @@
 						<div class="blog-tag-box">
 							<ul class="list-inline tag-list">
 								<g:each in = "${fetched_value1}" status = "i" var = "val">
-									<li class="list-inline-item"><a id="list-inline-item1">${val.catagory}</a></li>
+									<li class="list-inline-item"><a id="list-inline-item1">${val.category}</a></li>
 								</g:each>
 							</ul>
 						</div>
@@ -361,6 +384,38 @@
                     data:{post_id:postt_id},
                 });
         });
+		$(document).ready(function(){
+			$('.blog-comment-box #replyBtn').click(function(){
+				$(this).siblings('#comment').css("visibility","visible");
+				$(this).siblings('#send').css("visibility","visible");
+			});
+		});
+		$(document).ready(function(){
+			$('.blog-comment-box #send').click(function(){
+				var comtId = $(this).attr("name");
+				var reply = $(this).siblings('#comment').val();
+				var today1 = new Date();
+                var time = today1.getHours() + ":" + today1.getMinutes();
+			
+				if(reply == ""){
+					alert("***please write a reply");
+					return false;
+				}
+
+				var URL="${createLink(controller:'webPage',action:'reply_ajax_req')}"
+
+                $.ajax({
+                    url: URL,
+                    type: "POST",
+                    datatype: "html",
+                    data:{reply:reply,time:time,comtId:comtId},
+                    success:function(data)
+                    {
+						alert(data)
+                    }
+                })
+			});
+		});
 
 		function commentAjax() {
             $(document).ready(function() {

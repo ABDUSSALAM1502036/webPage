@@ -247,6 +247,7 @@
 <asset:javascript src="contact-form-script.js"></asset:javascript>
 <asset:javascript src="custom.js"></asset:javascript>
 	<script>
+
 		$(document).ready(function() {
             $('.row button').click(function(){
 				var status = $(this).attr('class');
@@ -254,6 +255,7 @@
 					$('#msgSubmit').html("");
 					alert($('#name').val() + " " + $('#email').val() + " " + $('#guest').val() );
 				}
+				
             });
         });
 		$('.map-full').mapify({

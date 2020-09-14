@@ -96,7 +96,7 @@
 					<div class="col-lg-4 col-md-6 col-12">
 						<div class="blog-box-inner">
 							<div class="blog-img-box">
-								<asset:image class="img-fluid" src="blog-img-01.jpg" alt=""/>
+								<img class="img-fluid" src="${createLink(action: 'getBlog', controller: 'webPage', id:"${val.id}")}" alt="" />
 							</div>
 							<div class="blog-detail">
 								<h4>${val.title}</h4>
@@ -105,7 +105,7 @@
 									<li>|</li>
 									<li><span>${val.date}</span></li>
 								</ul>
-								<p>${val.post_shortcut}</p>
+								<p>${val.shortcut}</p>
 								<button value="${val.id}" id="special_btn" style="margin-top:30px;color:white" class="btn btn-lg btn-circle btn-outline-new-white">Read More</button>
 							</div>
 						</div>

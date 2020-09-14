@@ -70,8 +70,12 @@
             float:left;
             border: 2px red solid;
         }
-        #create-student2 input,textarea{
+        #create-student2 input,textarea,select{
             margin:5px;
+        }
+        #create-student2 input,select{
+            width:205px;
+            height:33px;
         }
         #create-student3 input,button{
             margin:10px;
@@ -136,11 +140,19 @@
 <!--start Blog form-->
     <div id="create-student2">
         <strong style="margin:5px">Add Post Here...</strong><br>
-        <input type="text" id="title" placeholder="Enter Post Title"/> 
-        <input type="text" id="catagory" placeholder="Enter catagory"/> <br>
-        <textarea cols="50" rows="5" id="post_shortcut" placeholder="Enter post-shortcut"></textarea><br>
-        <textarea cols="50" rows="5" id="post_details" placeholder="Enter post-details"></textarea><br>
-        <button style="width:100px;margin-left:320px" id = "button1" name = "button1" onClick = "postAjax()">post</button>
+            <g:uploadForm class="photos" action ="blog_ajax_req">
+            <input type="text" name="title" placeholder="Enter Post Title"/> 
+            <select  name="category">
+                <option disabled selected>Select Category*</option>
+                <option value="drink">drink</option>
+                <option value="lunch">lunch</option>
+                <option value="dinner">dinner</option>
+            </select> <br>
+            <textarea cols="50" rows="5" name="shortcut" placeholder="Enter post-shortcut" ></textarea><br>
+            <textarea cols="50" rows="5" name="details" placeholder="Enter post-details"></textarea><br>
+            <g:field name="photos" type="file" accept="image/*"/>
+            <g:submitButton name="save" value="save" />
+        </g:uploadForm>
     </div>
 <!--end Blog form-->
 <!--start Stuff form-->
@@ -222,42 +234,4 @@
 <asset:javascript src="contact-form-script.js"></asset:javascript>
 <asset:javascript src="custom.js"></asset:javascript>
 </body>
-<script>
-        
-        function postAjax() {
-            $(document).ready(function() {
-                const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"];
-                var title = $('#title').val(); 
-                var catagory = $('#catagory').val();
-                var today = new Date();
-                var date = today.getDate()+' '+ monthNames[today.getMonth()]+', '+(today.getFullYear()+1);
-                var today1 = new Date();
-                var time = today1.getHours() + ":" + today1.getMinutes(); 
-                var post_shortcut = $('#post_shortcut').val(); 
-                var post_details = $('#post_details').val(); 
-
-                if(title == "" || date == "" || time == "" || post_shortcut == "" || post_details == "" || catagory == "") {
-                    alert('***please fillup all fields !!');
-                    return false;
-                }
-
-                var URL="${createLink(controller:'webPage',action:'post_student_ajax_req')}"
-
-                $.ajax({
-                    url: URL,
-                    type: "POST",
-                    datatype: "html",
-                    data:{title:title,date:date,time:time,post_shortcut:post_shortcut,post_details:post_details,catagory:catagory},
-                    success:function(data)
-                    {
-                        alert(data);
-                        $('#title').val("");$('#catagory').val("");
-                        $('#post_shortcut').val("");$('#post_details').val("");
-                    }
-                })
-            })
-        }
-    
-    </script>
 </html>

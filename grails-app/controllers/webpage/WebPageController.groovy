@@ -112,21 +112,77 @@ class WebPageController {
     }
     def contact() { }
     def blog() {
-        def fetched_value1 = Blogs.list() 
+        def fetched_value1 = Blogs.findAll() 
         [fetched_value1:fetched_value1]
      }
+     def blog_ajax_req(){
+        def imageMap = [:];
+        byte[] image=request.getFile("photos").bytes
+        String imageContentType = request.getFile("photos").contentType
+        String title = params.title;
+        String category = params.category;
+        String date = new Date();
+        String time = "11:19 PM"; 
+        String shortcut = params.shortcut;
+        String details = params.details;
+        if (image == null ) {
+            imageMap.put("title", null);
+            imageMap.put("category", null);
+            imageMap.put("date", null);
+            imageMap.put("time", null);
+            imageMap.put("shortcut", null);
+            imageMap.put("details", null);
+            imageMap.put("image", null);
+            imageMap.put("imageContentType", null);
+        } else {
+            imageMap.put("title", title);
+            imageMap.put("category", category);
+            imageMap.put("date", date);
+            imageMap.put("time", time);
+            imageMap.put("shortcut", shortcut);
+            imageMap.put("details", details);
+            imageMap.put("image", image);
+            imageMap.put("imageContentType", imageContentType);
+        }
+
+        Blogs newImage = new Blogs(imageMap);
+        if(newImage.save()){
+            redirect action:"admin"
+        }else{
+            render "Error..!!"
+        }
+    }
+    def getBlog(Long id) {
+        def user = Blogs.get(id);
+        if (user != null) {
+            response.contentType = user.imageContentType == null ? "image/jpeg" : user.imageContentType;
+            response.contentLength = user.image == null ? 0 : user.image.size();
+            response.outputStream << user.image;
+        } else {
+            response.contentType = "image/jpeg";
+            response.contentLength = 0;
+            response.outputStream << null;
+        }
+    }
+
     def blog_details() { 
         def fetched_value1 = Blogs.findAll([sort: "date", order: "desc"]) 
-        def catagory = Blogs.findAllByCatagoryIlike("%$params.catagory%")?.collect{it.catagory}
-        def unique_catagory = catagory as Set
+        /*def catagory = Blogs.findAllByCatagoryIlike("%$params.catagory%")?.collect{it.catagory}
+        def unique_catagory = catagory as Set*/
 
         ppost_id = params.post_id
         def postt_details = Blogs.findAllById(ppost_id)
+        //def replyCmt = Reply.findAll()
 
         Blogs blogsObj = Blogs.get(postt_details.id)     
         def post_comments = Comment.findAllByBlogsInComment(blogsObj)
 
-        [postt_details:postt_details, fetched_value1:fetched_value1,post_comments:post_comments,unique_catagory:unique_catagory]
+        def blogs = Blogs.findAllById(ppost_id)
+        Blogs blogsObj1 = Blogs.get(blogs.id)
+        
+        def all_reply = Reply.findAllByBlogsInReply(blogsObj1)
+
+        [all_reply:all_reply,postt_details:postt_details, fetched_value1:fetched_value1,post_comments:post_comments,ppost_id:ppost_id]
 
     }
     /*def tag_Ajax_req(){
@@ -190,11 +246,6 @@ class WebPageController {
         webPage.save();
         redirect action:"admin", method:"GET"
     }
-    def post_student_ajax_req(){
-        Blogs newPost = new Blogs(params)
-        newPost.save()
-        render "Post saved successfully"
-    }
 
     def comment_student_ajax_req(){
         def username = params.username
@@ -208,6 +259,24 @@ class WebPageController {
         Comment newCmt = new Comment(blogsInComment:blogsObj,username:username,email:email,time:time,post_comment:comment)
         newCmt.save()
         render "Comment saved successfully"
+    }
+    def reply_ajax_req(){
+        def reply = params.reply
+        def time = params.time
+        def comtId = params.comtId
+
+        def blogsFetch = Blogs.findAllById(ppost_id)
+        Blogs blogsObj = Blogs.get(blogsFetch.id)
+
+        def commentFetch = Comment.findAllById(comtId)
+        Comment commentObj = Comment.get(commentFetch.id)
+
+        Reply newReply = new Reply(blogsInReply:blogsObj,commentInReply:commentObj,reply:reply,time:time)
+        if(newReply.save()){
+            render "reply saved successfully"
+        }else{
+            render "Error"
+        }
     }
     
 }
